@@ -15,33 +15,31 @@ public class Game {
             System.out.println("Ou voulez vous attaquer (a A1)");
             try {
                 command = Parseur.parseInput();
-                int x = ((int) command[1].charAt(0)) - ((int) 'A');
-                int y = Integer.valueOf(command[1].charAt(1));
-
-                if (!p.getAttackGrid().isAlreadyShooted(x, y)) {
-                    p.attack(x, y);
-                    return;
-                }
-                System.out.println("Cette case a déjà été touchée.");
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
             }
+            int x = ((int) command[1].charAt(0)) - ((int) 'A');
+            int y = Integer.valueOf(command[1].charAt(1));
+
+            if (!p.getAttackGrid().isAlreadyShooted(x, y)) {
+                p.attack(x, y);
+                return;
+            }
+            System.out.println("Cette case a déjà été touchée.");
         } while (true);
     }
 
-    public void partie(){
+    public void partie() {
         boolean gagner = false;
 
-        do{
+        do {
             tourPlayer(p1);
             gagner = p1.haveWin();
 
-            if(!gagner){
+            if (!gagner) {
                 tourPlayer(p2);
                 gagner = p1.haveWin();
             }
-        }
-
-        return;
+        } while (!gagner);
     }
 }
