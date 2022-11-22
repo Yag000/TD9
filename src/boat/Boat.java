@@ -5,7 +5,7 @@ public abstract class Boat {
 
     protected boolean[] hit;
 
-    public Boat(int size) {
+    protected Boat(int size) {
         this.size = size;
         this.hit = new boolean[size];
     }
