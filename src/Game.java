@@ -1,10 +1,10 @@
 public class Game {
-    private Parseur parseur;
+    private Parser parser;
     private Player p1;
     private Player p2;
 
     public Game() {
-        parseur = new Parseur();
+        parser = new Parser();
         p1 = new Player("p1");
         p2 = new Player("p2");
         p1.setAttackGrid(p2.getSelfGrid());
@@ -16,7 +16,7 @@ public class Game {
         do {
             System.out.println("Ou voulez vous attaquer (a A1)");
             try {
-                command = parseur.parseInput();
+                command = parser.parseInput();
             } catch (IllegalArgumentException e) {
                 System.out.println(e);
             }
