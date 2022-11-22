@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 import boat.Boat;
 
 /**
@@ -24,16 +27,8 @@ public class Board {
     }
 
     public boolean placeBoat(int x, int y, Boat b, Orientation o) {
-        int verticalDirection = (o == Orientation.NORTH) ? 1 : -1;
-        int horizontalDirection = (o == Orientation.EAST) ? 1 : -1;
-
-        int move = (o == Orientation.NORTH ||
-                o == Orientation.SOUTH) ? y : x;
-
-        for (int i = move; i < b.size; i++) {
-
-        }
-
+        // TODO
+        return true;
     }
 
     public Cell getCell(int x, int y) {
@@ -47,6 +42,42 @@ public class Board {
     public void shootCell(int x, int y) {
         // Check if shootable
         getCell(x, y).shoot();
+    }
+
+    /**
+     * Checks if all the Boats have been sunk
+     * 
+     * @return true if all the Boats have been sunk;
+     *         false otherwise
+     */
+    public boolean allSunk() {
+
+        for (Boat boat : getAllBoats()) {
+            if (!boat.isSunk())
+                return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Gets all the Boats on the Board
+     *
+     * @return A Set containing all tne Board's Boats
+     */
+    public Set<Boat> getAllBoats() {
+
+        Set<Boat> res = new HashSet<>();
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (getCell(i, j).hasBoat())
+                    res.add(getBoat(i, j));
+            }
+        }
+
+        return res;
+
     }
 
 }
