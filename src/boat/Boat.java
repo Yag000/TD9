@@ -3,11 +3,17 @@ package boat;
 public abstract class Boat {
     protected int size;
 
+    protected int type;
+
     protected boolean[] hit;
 
-    protected Boat(int size) {
+    protected Boat(int size, int type) {
         this.size = size;
         this.hit = new boolean[size];
+    }
+
+    public int getType() {
+        return type;
     }
 
     /**

@@ -3,7 +3,7 @@ package boat;
 public class PorteAvions extends Boat {
 
     public PorteAvions() {
-        super(5);
+        super(5, 3);
     }
 
     @Override

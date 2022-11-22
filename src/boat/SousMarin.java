@@ -3,7 +3,7 @@ package boat;
 public class SousMarin extends Boat {
 
     public SousMarin() {
-        super(3);
+        super(3, 4);
     }
 
     @Override
