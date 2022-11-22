@@ -49,4 +49,10 @@ public abstract class Boat {
     public void hitAt(int position) {
         hit[position] = true;
     }
+
+    @Override
+    public String toString() {
+        return Integer.toString(type);
+    }
+
 }
