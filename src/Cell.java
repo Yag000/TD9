@@ -1,10 +1,12 @@
+import boat.Boat;
+
 public class Cell {
 
     int x, y; // Cell coordinates
     Boat boat; // The boat
-    int part; // Which part of the boat
+    Integer part; // Which part of the boat
 
-    public Cell(int x, int y, Boat boat, int part) {
+    public Cell(int x, int y, Boat boat, Integer part) {
         this.x = x;
         this.y = y;
         this.boat = boat;
@@ -12,7 +14,15 @@ public class Cell {
     }
 
     public Cell(int x, int y) {
-        this(x, y, null, -1);
+        this(x, y, null, null);
+    }
+
+    public Boat getBoat() {
+        return boat;
+    }
+
+    public void shoot() {
+        boat.hitAt(part);
     }
 
 }

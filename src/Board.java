@@ -1,3 +1,5 @@
+import boat.Boat;
+
 /**
  * Board
  */
@@ -25,12 +27,26 @@ public class Board {
         int verticalDirection = (o == Orientation.NORTH) ? 1 : -1;
         int horizontalDirection = (o == Orientation.EAST) ? 1 : -1;
 
-        for (int i = x; i < board.length; i += verticalDirection) {
-            for (int j = y; j < board.length; j += horizontalDirection) {
+        int move = (o == Orientation.NORTH ||
+                o == Orientation.SOUTH) ? y : x;
 
-            }
+        for (int i = move; i < b.size; i++) {
+
         }
 
+    }
+
+    public Cell getCell(int x, int y) {
+        return board[x][y];
+    }
+
+    public Boat getBoat(int x, int y) {
+        return getCell(x, y).getBoat();
+    }
+
+    public void shootCell(int x, int y) {
+        // Check if shootable
+        getCell(x, y).shoot();
     }
 
 }
