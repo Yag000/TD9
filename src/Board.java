@@ -1,5 +1,8 @@
+import java.security.cert.LDAPCertStoreParameters;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.security.auth.kerberos.KeyTab;
 
 import boat.Boat;
 
@@ -27,8 +30,11 @@ public class Board {
     }
 
     public boolean placeBoat(int x, int y, Boat b, Orientation o) {
-        // TODO
+        if (getCell(x, y).hasBoat())
+            return false;
+
         return true;
+
     }
 
     public Cell getCell(int x, int y) {
@@ -40,7 +46,7 @@ public class Board {
     }
 
     public void shootCell(int x, int y) {
-        // Check if shootable
+        // TODO: Check if shootable
         getCell(x, y).shoot();
     }
 
@@ -78,6 +84,30 @@ public class Board {
 
         return res;
 
+    }
+
+    public void show() {
+        String rowName = "ABCDEFGHIJ";
+        int colName = 1;
+        String lineDelimiter = "-".repeat(23);
+        int rowIdx = 0;
+
+        System.out.print("   ");
+        for (int i = 1; i < 11; i++) {
+            System.out.print(" " + i);
+        }
+        System.out.println(lineDelimiter);
+
+        for (Cell[] row : board) {
+            System.out.print(rowName.charAt(rowIdx) + " |");
+
+            for (Cell col : row) {
+                System.out.print(col.getBoat() + " ");
+                rowIdx++;
+
+            }
+            System.out.println(lineDelimiter);
+        }
     }
 
 }

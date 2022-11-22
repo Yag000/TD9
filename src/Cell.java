@@ -1,3 +1,5 @@
+import java.util.EnumSet;
+
 import boat.Boat;
 
 public class Cell {
@@ -61,5 +63,12 @@ public class Cell {
 
     public void shoot() {
         boat.hitAt(part);
+    }
+
+    @Override
+    public String toString() {
+        if (hasBoat())
+            return "#";
+        return " ";
     }
 }
